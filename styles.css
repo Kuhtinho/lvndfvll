@@ -39,6 +39,16 @@ a {
   text-decoration: none;
 }
 
+/* Hide browser-extension overlays (e.g. Apollo, Lovable badge) */
+.extension-opener-icon,
+[data-cy="apollo-opener-icon-new"],
+#lovable-badge,
+[id*="apollo_everywhere"] {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
 .site-header {
   align-items: center;
   backdrop-filter: blur(8px);
@@ -77,21 +87,6 @@ a {
 .site-nav a:hover,
 .social-links a:hover {
   color: #fff;
-}
-
-.menu-button {
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  display: grid;
-  gap: 0.3rem;
-}
-
-.menu-button span {
-  background: #bdbdbd;
-  display: block;
-  height: 1px;
-  width: 1.3rem;
 }
 
 .hero {
