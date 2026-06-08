@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Eurostile Extended";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./public/assets/fonts/eurostile-extended-two.woff2") format("woff2");
+}
+
 :root {
   --bg: #020202;
   --panel: #070707;
@@ -6,6 +14,8 @@
   --accent: #b81625;
   --line: #181818;
   --header-height: 4.75rem;
+  --font-display: "Eurostile Extended", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
 * {
@@ -18,7 +28,9 @@ html {
   scroll-behavior: smooth;
 }
 
-#music {
+#music,
+#gigs,
+#photos {
   scroll-margin-top: var(--header-height);
 }
 
@@ -29,7 +41,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
   letter-spacing: 0.04em;
   min-height: 100vh;
 }
@@ -66,6 +78,7 @@ a {
 
 .logo,
 .footer-logo {
+  font-family: var(--font-display);
   font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: 0.12rem;
@@ -79,13 +92,14 @@ a {
 
 .site-nav a {
   color: #b9b9b9;
+  font-family: var(--font-display);
   font-size: 0.66rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.28rem;
 }
 
 .site-nav a:hover,
-.social-links a:hover {
+.footer-links a:hover {
   color: #fff;
 }
 
@@ -118,8 +132,9 @@ a {
 
 .eyebrow {
   color: #9b9b9b;
+  font-family: var(--font-display);
   font-size: 0.68rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.43rem;
   margin-bottom: 0.9rem;
 }
@@ -131,17 +146,23 @@ a {
   width: 3rem;
 }
 
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
 h1 {
   font-size: clamp(2.8rem, 12.5vw, 8rem);
-  font-weight: 800;
   letter-spacing: 0.03em;
   line-height: 0.95;
 }
 
 .subheading {
   color: #a2a2a2;
+  font-family: var(--font-display);
   font-size: 0.7rem;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.36rem;
   margin-top: 1.3rem;
 }
@@ -149,8 +170,9 @@ h1 {
 .scroll-link {
   bottom: 1.6rem;
   color: #a0a0a0;
+  font-family: var(--font-display);
   font-size: 0.56rem;
-  font-weight: 600;
+  font-weight: 700;
   justify-self: center;
   letter-spacing: 0.38rem;
   position: absolute;
@@ -159,8 +181,9 @@ h1 {
 .hero-year {
   bottom: 1.8rem;
   color: #8a8a8a;
+  font-family: var(--font-display);
   font-size: 0.52rem;
-  font-weight: 600;
+  font-weight: 700;
   left: 1.4rem;
   letter-spacing: 0.26rem;
   position: absolute;
@@ -200,21 +223,23 @@ h1 {
 
 .release-tag {
   color: var(--accent);
+  font-family: var(--font-display);
   font-size: 0.74rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.28rem;
 }
 
 .release-copy h2 {
   font-size: clamp(2.5rem, 6vw, 4.9rem);
-  font-weight: 800;
   letter-spacing: 0.2rem;
   margin-top: 0.7rem;
 }
 
 .release-state {
   color: #9f9f9f;
+  font-family: var(--font-display);
   font-size: 0.76rem;
+  font-weight: 700;
   letter-spacing: 0.34rem;
   margin-bottom: 1.4rem;
 }
@@ -232,8 +257,9 @@ h1 {
   border: 1px solid #808080;
   color: #d8d8d8;
   cursor: pointer;
+  font-family: var(--font-display);
   font-size: 0.66rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.33rem;
   margin-bottom: 1.8rem;
   padding: 0.9rem 1.55rem;
@@ -254,10 +280,90 @@ h1 {
   border-bottom: 1px solid var(--line);
   color: #c5c5c5;
   display: flex;
+  font-family: var(--font-display);
   font-size: 0.84rem;
+  font-weight: 700;
   justify-content: space-between;
   letter-spacing: 0.18rem;
   padding: 1rem 0;
+}
+
+.gigs {
+  border-top: 1px solid var(--line);
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 3rem 2.2rem;
+}
+
+.gigs-header {
+  margin-bottom: 1.6rem;
+}
+
+.gigs-tag,
+.photos-tag,
+.store-tag {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.32rem;
+}
+
+.gigs h2,
+.photos h2,
+.store h2 {
+  font-size: clamp(2.2rem, 4vw, 3.3rem);
+  letter-spacing: 0.16rem;
+  margin-top: 0.5rem;
+}
+
+.gigs-empty {
+  border-top: 1px solid var(--line);
+  color: #8a8a8a;
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  padding-top: 1.2rem;
+}
+
+.photos {
+  border-top: 1px solid var(--line);
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 3rem 2.2rem;
+}
+
+.photos-header {
+  margin-bottom: 2rem;
+}
+
+.photos-grid {
+  align-items: end;
+  container-type: inline-size;
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.photos-grid img {
+  border: 1px solid var(--line);
+  display: block;
+  filter: grayscale(1);
+  height: auto;
+  transition: filter 550ms ease, transform 650ms ease, border-color 250ms ease;
+  width: 100%;
+}
+
+.photos-grid img:hover {
+  border-color: #2a2a2a;
+  filter: grayscale(0.15);
+  transform: scale(1.02);
+}
+
+.photos-grid img.photo-compact {
+  justify-self: center;
+  max-height: calc(33.333cqi * 560 / 1024);
+  max-width: 100%;
+  width: auto;
 }
 
 .store {
@@ -269,19 +375,6 @@ h1 {
 
 .store-header {
   margin-bottom: 2rem;
-}
-
-.store-tag {
-  color: var(--accent);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.32rem;
-}
-
-.store h2 {
-  font-size: clamp(2.2rem, 4vw, 3.3rem);
-  letter-spacing: 0.16rem;
-  margin-top: 0.5rem;
 }
 
 .store-grid {
@@ -311,15 +404,18 @@ h1 {
 
 .store-name {
   color: #e0e0e0;
+  font-family: var(--font-display);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.24rem;
   padding: 1rem 1rem 0.25rem;
 }
 
 .store-variant {
   color: #8a8a8a;
+  font-family: var(--font-display);
   font-size: 0.65rem;
+  font-weight: 700;
   letter-spacing: 0.22rem;
   padding: 0 1rem 1rem;
 }
@@ -335,20 +431,23 @@ h1 {
 }
 
 .footer-text {
+  font-family: var(--font-display);
   font-size: 0.72rem;
+  font-weight: 700;
   letter-spacing: 0.24rem;
   margin-top: 0.6rem;
 }
 
-.social-links {
+.footer-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.4rem;
   justify-content: center;
 }
 
-.social-links a {
+.footer-links a {
   font-size: 0.76rem;
-  letter-spacing: 0.22rem;
+  letter-spacing: 0.12rem;
 }
 
 .copyright {
@@ -381,6 +480,8 @@ h1 {
     display: none;
   }
 
+  .gigs,
+  .photos,
   .store {
     padding-inline: 1.25rem;
   }
@@ -397,7 +498,13 @@ h1 {
 }
 
 @media (max-width: 600px) {
+  .photos-grid,
   .store-grid {
     grid-template-columns: 1fr;
+  }
+
+  .photos-grid img.photo-compact {
+    max-height: none;
+    width: 100%;
   }
 }
