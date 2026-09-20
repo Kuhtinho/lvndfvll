@@ -199,25 +199,29 @@ h1 {
 }
 
 .music-release {
-  align-items: stretch;
   background: var(--panel);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  display: grid;
-  gap: 0;
-  grid-template-columns: 1fr 1fr;
   margin: 0 auto;
   max-width: 1280px;
+}
+
+.release-feature {
+  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-height: 62vh;
-  padding: 0;
 }
 
 .release-art {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.35)),
+  align-items: flex-end;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.55)),
     url("./public/assets/single-cover.jpg");
   background-position: center center;
   background-size: cover;
   border-right: 1px solid var(--line);
+  display: flex;
+  padding: 1.4rem;
 }
 
 .release-copy {
@@ -236,77 +240,63 @@ h1 {
   letter-spacing: 0.28rem;
 }
 
-.release-copy h2 {
-  font-size: clamp(2.5rem, 6vw, 4.9rem);
-  letter-spacing: 0.2rem;
-  margin: 0.7rem 0 1.6rem;
-}
-
-.track-list {
-  border-top: 1px solid var(--line);
-  list-style: none;
-}
-
-.track-list li {
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  padding: 1.15rem 0 1.25rem;
-}
-
-.single-heading {
-  align-items: baseline;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem 1rem;
-}
-
-.track-list time {
-  color: #8a8a8a;
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.2rem;
-  white-space: nowrap;
-}
-
-.single-name {
-  color: #efefef;
+.featured-title {
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.08rem;
-  text-transform: none;
+  font-size: clamp(3.4rem, 8vw, 5.8rem);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 0.92;
+  margin-top: 0.55rem;
+}
+
+.featured-date {
+  color: #9a9a9a;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.34rem;
+  margin-top: 0.85rem;
 }
 
 .countdown {
   display: grid;
   gap: 0.55rem;
-  grid-template-columns: repeat(4, minmax(0, 3.4rem));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
 }
 
 .countdown-unit {
+  align-items: center;
+  background: rgba(5, 5, 5, 0.72);
+  border: 1px solid #2a2a2a;
   display: flex;
   flex-direction: column;
-  gap: 0.28rem;
+  gap: 0.4rem;
+  padding: 0.9rem 0.25rem 0.7rem;
+  text-align: center;
 }
 
 .countdown-value {
-  color: #efefef;
+  color: #f3f3f3;
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: clamp(1.45rem, 4vw, 2.2rem);
   font-variant-numeric: tabular-nums;
   font-weight: 700;
-  letter-spacing: 0.12rem;
+  letter-spacing: 0.08rem;
+  line-height: 1;
 }
 
 .countdown-label {
-  color: #8a8a8a;
+  color: #7c7c7c;
   font-family: var(--font-display);
-  font-size: 0.58rem;
+  font-size: 0.52rem;
   font-weight: 700;
-  letter-spacing: 0.16rem;
+  letter-spacing: 0.18rem;
+}
+
+.countdown-seconds {
+  animation: countdown-pulse 1s ease-in-out infinite;
+  border-color: #4a151b;
 }
 
 .countdown.is-live {
@@ -316,9 +306,96 @@ h1 {
 .countdown-live {
   color: var(--accent);
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 1rem;
   font-weight: 700;
+  letter-spacing: 0.32rem;
+}
+
+@keyframes countdown-pulse {
+  0%,
+  100% {
+    border-color: #3a1218;
+    box-shadow: none;
+  }
+  50% {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(184, 22, 37, 0.28);
+  }
+}
+
+.signal-list {
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.signal-list li {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 0.9rem 1.2rem;
+  grid-template-columns: 2.1rem 7.4rem minmax(0, 1fr) auto;
+  padding: 1rem 1.6rem;
+}
+
+.signal-list li:last-child {
+  border-bottom: 0;
+}
+
+.signal-list li.is-next {
+  background: rgba(184, 22, 37, 0.05);
+}
+
+.signal-index {
+  color: #6f6f6f;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18rem;
+}
+
+.signal-list time {
+  color: #8a8a8a;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16rem;
+}
+
+.signal-name {
+  color: #efefef;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.signal-name.is-unknown {
+  color: #6a6a6a;
+  font-family: var(--font-display);
   letter-spacing: 0.28rem;
+}
+
+.countdown-compact {
+  width: auto;
+  min-width: 15.5rem;
+}
+
+.countdown-compact .countdown-unit {
+  background: #080808;
+  padding: 0.45rem 0.25rem 0.4rem;
+}
+
+.countdown-compact .countdown-value {
+  font-size: 0.92rem;
+}
+
+.countdown-compact .countdown-label {
+  font-size: 0.42rem;
+  letter-spacing: 0.12rem;
+}
+
+.countdown-compact.is-live {
+  min-width: 0;
 }
 
 .gigs {
@@ -486,6 +563,10 @@ h1 {
   }
 
   .music-release {
+    min-height: initial;
+  }
+
+  .release-feature {
     grid-template-columns: 1fr;
     min-height: initial;
   }
@@ -499,6 +580,25 @@ h1 {
   .release-copy {
     padding: 2rem 1.25rem;
     border-right: 0;
+  }
+
+  .signal-list li {
+    grid-template-columns: 2.1rem 1fr;
+    padding-inline: 1.25rem;
+  }
+
+  .signal-list time {
+    grid-column: 2;
+  }
+
+  .signal-name,
+  .countdown-compact {
+    grid-column: 2;
+  }
+
+  .countdown-compact {
+    min-width: 0;
+    max-width: 18rem;
   }
 
   .hero-year {
@@ -531,5 +631,11 @@ h1 {
   .photos-grid img.photo-compact {
     max-height: none;
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown-seconds {
+    animation: none;
   }
 }

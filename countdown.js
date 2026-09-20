@@ -3,6 +3,13 @@ const HOUR = 3600000;
 const MINUTE = 60000;
 const SECOND = 1000;
 
+const UNITS = [
+  ["days", "DAYS"],
+  ["hours", "HRS"],
+  ["minutes", "MIN"],
+  ["seconds", "SEC"],
+];
+
 function pad(value) {
   return String(value).padStart(2, "0");
 }
@@ -48,6 +55,21 @@ function remainingParts(target, now) {
   return { days, hours, minutes, seconds };
 }
 
+function buildCountdown(el) {
+  if (el.querySelector("[data-unit]")) {
+    return;
+  }
+
+  const featured = el.classList.contains("countdown-featured");
+  el.innerHTML = UNITS.map(([unit, label]) => {
+    const pulse = featured && unit === "seconds" ? " countdown-seconds" : "";
+    return `<div class="countdown-unit${pulse}">
+      <span class="countdown-value" data-unit="${unit}">00</span>
+      <span class="countdown-label">${label}</span>
+    </div>`;
+  }).join("");
+}
+
 function renderCountdown(el, parts) {
   if (!parts) {
     el.classList.add("is-live");
@@ -55,24 +77,22 @@ function renderCountdown(el, parts) {
     return;
   }
 
-  const set = (unit, value) => {
+  UNITS.forEach(([unit]) => {
     const node = el.querySelector(`[data-unit="${unit}"]`);
     if (node) {
-      node.textContent = pad(value);
+      node.textContent = pad(parts[unit]);
     }
-  };
-
-  set("days", parts.days);
-  set("hours", parts.hours);
-  set("minutes", parts.minutes);
-  set("seconds", parts.seconds);
+  });
 }
 
 function initCountdowns() {
-  const targets = [...document.querySelectorAll("[data-release]")].map((el) => ({
-    el,
-    at: warsawMidnight(el.dataset.release),
-  }));
+  const targets = [...document.querySelectorAll("[data-release]")].map((el) => {
+    buildCountdown(el);
+    return {
+      el,
+      at: warsawMidnight(el.dataset.release),
+    };
+  });
 
   const tick = () => {
     const now = Date.now();
